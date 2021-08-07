@@ -43,7 +43,7 @@ transfer_learning:                      # Load a pretrained model for fine-tunin
   freeze_encoder_layers: None           # None, "all" or {number}. If and how many encoder layers to keep constant during fine-tuning
 
 model:
-  with_cuda: False                       # Run model on GPU
+  with_cuda: True                       # Run model on GPU
   label_smoothing: 0.1                  # Apply label smoothing to ground truth
   lm_encoder:                           # Hyperparameters of the encoder
     input_nonlinearity: 'tanh'
