@@ -76,7 +76,11 @@ class CTCodeSummarizationMixin(ExperimentSetup, ABC):
 
         self.use_validation = use_validation
         if self.use_validation:
-            data_manager_validation = CTBufferedDataManager(stage2_path, language, partition="valid",
+            if language in {"poj_104", "codeforces"}:
+                partition = "val"
+            else:
+                partition = "valid"
+            data_manager_validation = CTBufferedDataManager(stage2_path, language, partition=partition,
                                                             shuffle=True, infinite_loading=True,
                                                             mini_dataset=mini_dataset, filter_language=filter_language,
                                                             dataset_imbalance=dataset_imbalance)

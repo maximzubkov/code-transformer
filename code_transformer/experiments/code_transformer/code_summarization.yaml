@@ -2,8 +2,8 @@ experiment_setup:
   executable: 'code_transformer/experiments/code_transformer/code_summarization.py'
 
 data_setup:
-  language: 'python,javascript,ruby,go' # The dataset (language) to use
-  filter_language: python               # only for multi-language datasets. Let only snippets of the specified language through (fine-tuning)
+  language: poj_104 # The dataset (language) to use
+  #filter_language: python               # only for multi-language datasets. Let only snippets of the specified language through (fine-tuning)
   use_validation: True
   num_sub_tokens: 5                     # Number of sub-tokens that input tokens should be split into
   num_subtokens_output: 6               # Number of sub-tokens of the method name to predict
@@ -43,7 +43,7 @@ transfer_learning:                      # Load a pretrained model for fine-tunin
   freeze_encoder_layers: None           # None, "all" or {number}. If and how many encoder layers to keep constant during fine-tuning
 
 model:
-  with_cuda: True                       # Run model on GPU
+  with_cuda: False                       # Run model on GPU
   label_smoothing: 0.1                  # Apply label smoothing to ground truth
   lm_encoder:                           # Hyperparameters of the encoder
     input_nonlinearity: 'tanh'
