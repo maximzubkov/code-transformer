@@ -21,7 +21,7 @@ class CPPRawDataLoader(RawDataLoader):
         self.lines = []
 
     def load(self, file_path_):
-        with open(file_path_, 'r', encoding="ascii") as f:
+        with open(file_path_, 'r', encoding="utf-8") as f:
             code = f.read()
         label = basename(dirname(file_path_))
         self.lines.append((label, code))
