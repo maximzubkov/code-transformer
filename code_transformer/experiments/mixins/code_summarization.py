@@ -18,7 +18,7 @@ class CTCodeSummarizationMixin(ExperimentSetup, ABC):
                    num_sub_tokens=NUM_SUB_TOKENS, num_subtokens_output=NUM_SUB_TOKENS_METHOD_NAME, use_only_ast=False,
                    use_no_punctuation=False,
                    use_pointer_network=False, sort_by_length=False, chunk_size=None, filter_language=None,
-                   dataset_imbalance=None, mask_all_tokens=False):
+                   dataset_imbalance=None, mask_all_tokens=False, infinite_loading=True):
 
         if language == "poj_104":
             stage2_path = POJ_DATA_PATH_STAGE_2
@@ -28,7 +28,7 @@ class CTCodeSummarizationMixin(ExperimentSetup, ABC):
             stage2_path = DATA_PATH_STAGE_2
 
         self.data_manager = CTBufferedDataManager(stage2_path, language, shuffle=True,
-                                                  infinite_loading=True,
+                                                  infinite_loading=infinite_loading,
                                                   mini_dataset=mini_dataset, sort_by_length=sort_by_length,
                                                   chunk_size=chunk_size, filter_language=filter_language,
                                                   dataset_imbalance=dataset_imbalance)
@@ -81,7 +81,7 @@ class CTCodeSummarizationMixin(ExperimentSetup, ABC):
             else:
                 partition = "valid"
             data_manager_validation = CTBufferedDataManager(stage2_path, language, partition=partition,
-                                                            shuffle=True, infinite_loading=True,
+                                                            shuffle=True, infinite_loading=infinite_loading,
                                                             mini_dataset=mini_dataset, filter_language=filter_language,
                                                             dataset_imbalance=dataset_imbalance)
             if use_only_ast:
